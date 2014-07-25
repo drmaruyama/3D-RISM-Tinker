@@ -16,7 +16,7 @@ c     "gradient" calls subroutines to calculate the potential energy
 c     and first derivatives with respect to Cartesian coordinates
 c
 c
-      subroutine gradient3d (energy,sfe,derivs,num,gpu)
+      subroutine gradient3d (energy,senergy,derivs,num,gpu)
       implicit none
       include 'sizes.i'
       include 'atoms.i'
@@ -25,7 +25,6 @@ c
       include 'deriv.i'
       include 'energi.i'
       include 'inter.i'
-      include 'iounit.i'
       include 'potent.i'
       include 'rigid.i'
       include 'vdwpot.i'
@@ -34,11 +33,11 @@ c
       include 'charge.i'
       include 'kvdws.i'
       integer i,j
-      integer fu,freeunit
-      integer count/0/,num,gpu
+      integer fu, freeunit
+      integer count/0/, num, gpu
       real*8 energy,cutoff
-      real*8 derivs(3,*)
-      real*8 sfe
+      real*8 derivs(3,maxatm)
+      real*8 senergy
       real*8 sigfact, qu(maxatm), sigu(maxatm), epsu(maxatm)
       character*80 dummy
       character*4 gn
@@ -133,7 +132,7 @@ c
 c
 c     alter bond and torsion constants for pisystem
 c
-      if (use_orbit)  call picalc
+      if (use_orbit)  call piscf
 c
 c     call the local geometry energy and gradient routines
 c
@@ -187,17 +186,17 @@ c
           sigu(i)=rad(class(i))*sigfact
           epsu(i)=eps(class(i))
           qu(i)=pchg(i)
-          write(fu,'(f10.4,f10.6,f10.3,3f10.5)')
+          write(fu,'(f10.4,f10.6,f10.3,3f10.5)') 
      .         qu(i), sigu(i), epsu(i), x(i), y(i), z(i)
         end do
         close(fu)
-      else
+      else         
         stop
       end if
-      if (count == 0) then
+      if (count == 0) then 
         call system('cat 3drism.dat xyz.dat > 3drism.inp')
         if (gpu == -1) then
-           call system('3drism 3drism.inp >> 3drism.out')
+           call system('3drism-grad 3drism >> 3drism.out')
         else
            write(gn, '(i4)') gpu
            call system('3drism-cuda 3drism.inp '//gn//' >> 3drism.out')
@@ -212,7 +211,7 @@ c
       open (fu, file='3drism.xmu',status='old')
       read (fu, *)  dummy, dummy, dummy, dummy, dummy
       close(fu)
-      read(dummy,*) e3d
+      read(dummy,*) e3d      
 c
 c     sum up to get the total energy and first derivatives
 c
@@ -220,7 +219,7 @@ c
      &          + et + ept + ebt + ett + ev + ec + ecd + ed + em
      &          + ep + er + es + elf + eg + ex
       energy = esum
-      sfe = e3d
+      senergy = e3d
       do i = 1, n
          do j = 1, 3
             desum(j,i) = deb(j,i) + dea(j,i) + deba(j,i)
@@ -235,14 +234,5 @@ c
             derivs(j,i) = desum(j,i)
          end do
       end do
-c
-c     check for an illegal value for the total energy
-c
-      if (isnan(esum)) then
-         write (iout,10)
-   10    format (/,' GRADIENT  --  Illegal Value for the Total',
-     &              ' Potential Energy')
-         call fatal
-      end if
       return
       end

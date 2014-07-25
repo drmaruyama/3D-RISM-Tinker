@@ -219,7 +219,6 @@ c
       esum = eb + ea + eba + eub + eaa + eopb + eopd + eid + eit
      &          + et + ept + ebt + ett + ev + ec + ecd + ed + em
      &          + ep + er + es + elf + eg + ex
-     &          + e3d 
       energy = esum
       sfe = e3d
       do i = 1, n
