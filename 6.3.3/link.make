@@ -19,10 +19,12 @@ gfortran -o diffuse.x diffuse.o libtinker.a
 gfortran -o distgeom.x distgeom.o libtinker.a
 gfortran -o document.x document.o libtinker.a
 gfortran -o dynamic.x dynamic.o libtinker.a
+gfortran -o dynamic-3drism.x dynamic-3drism.o libtinker.a
 gfortran -o gda.x gda.o libtinker.a
 gfortran -o intedit.x intedit.o libtinker.a
 gfortran -o intxyz.x intxyz.o libtinker.a
 gfortran -o minimize.x minimize.o libtinker.a
+gfortran -o minimize-3drism.x minimize-3drism.o libtinker.a
 gfortran -o minirot.x minirot.o libtinker.a
 gfortran -o minrigid.x minrigid.o libtinker.a
 gfortran -o molxyz.x molxyz.o libtinker.a

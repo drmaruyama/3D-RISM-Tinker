@@ -18,10 +18,12 @@ mv diffuse.x   ../bin/diffuse
 mv distgeom.x  ../bin/distgeom
 mv document.x  ../bin/document
 mv dynamic.x   ../bin/dynamic
+mv dynamic-3drism.x   ../bin/dynamic-3drism
 mv gda.x       ../bin/gda
 mv intedit.x   ../bin/intedit
 mv intxyz.x    ../bin/intxyz
 mv minimize.x  ../bin/minimize
+mv minimize-3drism.x  ../bin/minimize-3drism
 mv minirot.x   ../bin/minirot
 mv minrigid.x  ../bin/minrigid
 mv molxyz.x    ../bin/molxyz
@@ -64,7 +66,7 @@ mv vibrate.x   ../bin/vibrate
 mv vibrot.x    ../bin/vibrot
 mv xtalfit.x   ../bin/xtalfit
 mv xtalmin.x   ../bin/xtalmin
-mv xyz3drism.x ../bin/xyz3drism
+mv xyz3drism.x   ../bin/xyz3drism
 mv xyzedit.x   ../bin/xyzedit
 mv xyzint.x    ../bin/xyzint
 mv xyzpdb.x    ../bin/xyzpdb

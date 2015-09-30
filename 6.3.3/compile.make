@@ -19,6 +19,7 @@ gfortran -c -O attach.f
 gfortran -c -O bar.f
 gfortran -c -O basefile.f
 gfortran -c -O beeman.f
+gfortran -c -O beeman-3drism.f
 gfortran -c -O bicubic.f
 gfortran -c -O bitors.f
 gfortran -c -O bonds.f
@@ -50,6 +51,7 @@ gfortran -c -O diffuse.f
 gfortran -c -O distgeom.f
 gfortran -c -O document.f
 gfortran -c -O dynamic.f
+gfortran -c -O dynamic-3drism.f
 gfortran -c -O eangang.f
 gfortran -c -O eangang1.f
 gfortran -c -O eangang2.f
@@ -185,6 +187,7 @@ gfortran -c -O getword.f
 gfortran -c -O getxyz.f
 gfortran -c -O ghmcstep.f
 gfortran -c -O gradient.f
+gfortran -c -O gradient-3drism.f
 gfortran -c -O gradrgd.f
 gfortran -c -O gradrot.f
 gfortran -c -O groups.f
@@ -237,6 +240,7 @@ gfortran -c -O kurey.f
 gfortran -c -O kvdw.f
 gfortran -c -O lattice.f
 gfortran -c -O lbfgs.f
+gfortran -c -O lbfgs-3drism.f
 gfortran -c -O lights.f
 gfortran -c -O makeint.f
 gfortran -c -O makeref.f
@@ -246,9 +250,11 @@ gfortran -c -O mdinit.f
 gfortran -c -O mdrest.f
 gfortran -c -O mdsave.f
 gfortran -c -O mdstat.f
+gfortran -c -O mdstat-3drism.f
 gfortran -c -O mechanic.f
 gfortran -c -O merge.f
 gfortran -c -O minimize.f
+gfortran -c -O minimize-3drism.f
 gfortran -c -O minirot.f
 gfortran -c -O minrigid.f
 gfortran -c -O molecule.f
@@ -326,7 +332,9 @@ gfortran -c -O rotpole.f
 gfortran -c -O saddle.f
 gfortran -c -O scan.f
 gfortran -c -O sdstep.f
+gfortran -c -O sdstep-3drism.f
 gfortran -c -O search.f
+gfortran -c -O search-3drism.f
 gfortran -c -O server.f
 gfortran -c -O shakeup.f
 gfortran -c -O sigmoid.f
