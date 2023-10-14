@@ -188,7 +188,7 @@ c
           epsu(i)=eps(class(i))
           qu(i)=pchg(i)
           write(fu,'(f10.4,f10.6,f10.3,3f10.5)')
-     .         qu(i), sigu(i), epsu(i), x(i), y(i), z(i)
+     .         sigu(i), epsu(i) * 4184, qu(i), x(i), y(i), z(i)
         end do
         close(fu)
       else

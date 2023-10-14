@@ -52,7 +52,7 @@ c
       open (unit=irism,file=rismfile,status='new')
       write(irism,*) n
       do i=1,n
-        write(irism,100) qu(i),sigu(i),epsu(i),x(i),y(i),z(i)
+        write(irism,100) sigu(i), epsu(i)*4184, qu(i), x(i), y(i), z(i)
       end do
   100 format(F10.4,F10.6,F10.3,3F10.5)
       close (unit=irism)
